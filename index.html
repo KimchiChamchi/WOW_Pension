@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <title>WOW PENSION</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="css/slider.css" />
+    <link rel="stylesheet" href="css/topbottom.css" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+      integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+      crossorigin="anonymous"
+    />
+    <script type="text/javascript"> 
+    function getCookie(name) 
+    { var cookie = document.cookie; 
+    if (document.cookie != "") { 
+      var cookie_array = cookie.split("; ");
+       for ( var index in cookie_array) { 
+         var cookie_name = cookie_array[index].split("=");
+          if (cookie_name[0] == "popupYN") { return cookie_name[1]; } } }
+           return ; }
+     function openPopup(url) { 
+       var cookieCheck = getCookie("popupYN");
+        if (cookieCheck != "N") window.open(url, '', 'width=450,height=310,left=0,top=0') }
+
+     </script>
+   
+   <style>
+      * {
+        position: relative;
+        text-align: center;
+      }
+      body {
+        margin: 0;
+      }
+
+      a {
+        text-decoration: none;
+        color: white;
+      }
+
+      .project {
+        position: relative;
+        text-align: center;
+        display: inline-block;
+        height: 100%;
+      }
+
+      .headline {
+        position: relative;
+        display: flex;
+        width: 100%;
+        margin: 0px;
+        left: 0px;
+        height: 130px;
+        background-color: #263343;
+        justify-content: center;
+      }
+
+      .menu {
+        width: 950px;
+        height: 100px;
+        font-size: 30px;
+        margin-top: 10px;
+        display: inline-block;
+      }
+
+      .right-text {
+        width: 250px;
+        height: 30px;
+        display: inline-block;
+        margin-top: 10px;
+        text-align: right;
+      }
+
+      .right-text span {
+        margin: 10px;
+        color: white;
+      }
+
+      .right-text i {
+        margin: 10px;
+        color: white;
+      }
+
+      .menu img {
+        width: 170px;
+        height: 100px;
+        margin-left: 0;
+      }
+      .menu span {
+        padding: 8px 12px;
+        margin: 5px;
+        bottom: 40px;
+        color: white;
+      }
+
+      .menu span:hover {
+        background-color: #d49466;
+        border-radius: 4px;
+      }
+
+      #container {
+        border: 0px;
+        width: 1200px;
+        height: 100%;
+        background-color: white;
+        display: inline-block;
+      }
+
+      .image img {
+        width: 1200px;
+        padding: 0;
+        float: left;
+        z-index: 5;
+      }
+
+      .contents-center-room li {
+        margin-top: 30px;
+        padding: 0;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .contents-center-room .caption {
+        position: absolute;
+        top: 200px;
+        width: 330px;
+        height: 300px;
+        padding-top: 20px;
+        background: rgba(0, 0, 0, 0.5);
+        transition: all 0.6s ease-in-out;
+        opacity: 0;
+        z-index: 10;
+      }
+
+      .contents-center-room li:hover .caption {
+        opacity: 1;
+        transform: translateY(-200px);
+      }
+
+      .contents-center-room .caption h2 {
+        color: #fff;
+        text-align: center;
+        margin-left: 15px;
+      }
+      .contents-center-room .caption p {
+        color: #fff;
+        text-align: left;
+        margin-left: 15px;
+      }
+
+      .contents-center-room-text {
+        text-align: center;
+        font-size: 60px;
+      }
+
+      .contents-center-room-image img {
+        width: 330px;
+        height: 300px;
+      }
+
+      .contents-center-room li {
+        list-style: none;
+        display: inline-block;
+        margin: 20px;
+        text-align: left;
+      }
+
+      .special {
+        width: 1200px;
+        height: 800px;
+        font-size: 60px;
+        text-align: center;
+        position: relative;
+      }
+
+      .special img {
+        margin-top: 30px;
+        width: 700px;
+        float: left;
+        margin-right: 20px;
+      }
+      .special-sub-img {
+        list-style: none;
+      }
+      .special-sub-img img {
+        width: 300px;
+        height: 230px;
+      }
+
+      .special-facilities-first {
+        list-style: none;
+      }
+
+      .special-facilities-first img {
+        width: 500px;
+        float: right;
+      }
+
+      .special-facilities-second {
+        list-style: none;
+      }
+
+      .special-facilities-second img {
+        width: 300px;
+        float: right;
+        margin-top: 190px;
+      }
+
+      .special-facilities .special-text {
+        list-style: none;
+        font-size: 5px;
+      }
+
+      .special h1 {
+        color: burlywood;
+        font-size: 55px;
+        text-align: left;
+      }
+
+      .special .special-text-first {
+        list-style: none;
+        text-align: left;
+        font-size: 15px;
+      }
+
+      .special .special-text-second {
+        list-style: none;
+        color: rgb(204, 167, 118);
+        text-align: left;
+        font-size: 15px;
+      }
+
+      .facilities {
+        display: inline-block;
+        position: relative;
+        width: 1200px;
+      }
+
+      .facilities h1 {
+        font-size: 55px;
+      }
+
+      .facilities-img li {
+        list-style: none;
+        display: inline-block;
+        position: relative;
+        margin: 20px;
+        text-align: center;
+        overflow: hidden;
+      }
+
+      .facilities .caption {
+        position: absolute;
+        top: 200px;
+        width: 250px;
+        height: 200px;
+        padding: 25px 0px;
+        background: rgba(0, 0, 0, 0.5);
+        transition: all 0.6s ease-in-out;
+        opacity: 0;
+        z-index: 10;
+      }
+
+      .facilities li:hover .caption {
+        opacity: 1;
+        transform: translateY(-200px);
+      }
+
+      .facilities .caption h2 {
+        color: #fff;
+        text-align: center;
+      }
+
+      .facilities .caption p {
+        color: #fff;
+        text-align: left;
+        margin-left: 15px;
+      }
+
+      .facilities img {
+        width: 250px;
+        height: 250px;
+        margin-bottom: 25px;
+      }
+
+
+    </style>
+  </head>
+  <body onload="javascript:openPopup('popup.html')">
+  
+    <div id="header"></div>
+    <!-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+    <div id="container">
+      <div class="contents">
+        <div class="slider">
+          <div class="slide" style="background-image: url(image/sliding01.jpg)"></div>
+          <div class="slide" style="background-image: url(image/sliding02.jpg)"></div>
+          <div class="slide" style="background-image: url(image/sliding03.jpg)"></div>
+          <div class="slide" style="background-image: url(image/sliding04.jpg)"></div>
+          <div class="slide" style="background-image: url(image/sliding05.jpg)"></div>
+          <div class="slide" style="background-image: url(image/sliding06.jpg)"></div>
+          <a class="prev" onclick="button_click(-1)">&#10094</a>
+          <a class="next" onclick="button_click(1)">&#10095</a>
+        </div>
+        <div class="contents-center-room">
+          <span class="contents-center-room-text"><h1 style="font-size: 55px;">ROOM</h1></span>
+          <div class="contents-center-room-image">
+            <li>
+              <img src="image/mainpage1.jpg" alt="대청마루" /><br />
+              <div class="caption">
+                <h2>대청마루</h2>
+                <p>Room : 3개</p>
+                <p>person : 기준 4명, 최대 4명</p>
+                <p>type : 커플 및 가족</p>
+                <p>size : 30평</p>
+                <p>servise : TV,에어컨,냉장고...</p>
+              </div>
+            </li>
+
+            <li>
+              <img src="image/mainpage2.jpg" alt="소나무" /><br />
+              <div class="caption">
+                <h2>소나무</h2>
+                <p>Room : 2개</p>
+                <p>person : 기준 3명, 최대 4명</p>
+                <p>type : 친구, 연인</p>
+                <p>size : 24평</p>
+                <p>servise : TV,에어컨,냉장고...</p>
+              </div>
+            </li>
+            <li>
+              <img src="image/mainpage3.jpg" alt="반딧불" /><br />
+              <div class="caption">
+                <h2>반딧불</h2>
+                <p>Room : 3개</p>
+                <p>person : 기준 4명, 최대 4명</p>
+                <p>type : 친구 및 가족</p>
+                <p>size : 30평</p>
+                <p>servise : TV,에어컨,냉장고...</p>
+              </div>
+            </li>
+            <li>
+              <img src="image/mainpage4.jpg" alt="호수" /><br />
+              <div class="caption">
+                <h2>호수</h2>
+                <p>Room : 4개</p>
+                <p>person : 기준 6명, 최대 8명</p>
+                <p>type : 단함 및 단체</p>
+                <p>size : 40평</p>
+                <p>servise : TV,에어컨,냉장고...</p>
+              </div>
+            </li>
+            <li>
+              <img src="image/mainpage5.jpg" alt="햇살" /><br />
+              <div class="caption">
+                <h2>햇살</h2>
+                <p>Room : 3개</p>
+                <p>person : 기준 4명, 최대 4명</p>
+                <p>type : 친구 및 가족</p>
+                <p>size : 30평</p>
+                <p>servise : TV,에어컨,냉장고...</p>
+              </div>
+            </li>
+            <li>
+              <img src="image/mainpage6.jpg" alt="달무리" /><br />
+              <div class="caption">
+                <h2>달무리</h2>
+                <p>Room : 1개</p>
+                <p>person : 기준 2명, 최대 2명</p>
+                <p>type : 여행</p>
+                <p>size : 18평</p>
+                <p>servise : TV,에어컨,냉장고...</p>
+              </div>
+            </li>
+          </div>
+        </div>
+
+        <div class="special">
+          <h1>SPECIAL</h1>
+          <img src="image/special-main.jpg" alt="소개메인사진" />
+          <div class="special-text">
+            <h1>WELCOME</h1>
+            <li class="special-text-first">와우펜션을 찾아주셔서 감사합니다.</li>
+            <li class="special-text-first">고객여러분들께 항상 행복이 가득하시길 바랍니다.</li>
+            <br />
+            <li class="special-text-second">와우펜션은 최고의 시설과 편안한 서비스로</li>
+            <li class="special-text-second">찾아주시는 여러분들에게 안락한 휴식을 보내실 수 있도록</li>
+            <li class="special-text-second">최선의 노력을 다할 것을 약속드립니다.</li>
+          </div>
+          <li class="special-sub-img">
+            <img src="image/special-sub.jpg" alt="소개서브사진" />
+          </li>
+          <li class="special-facilities-first">
+            <img src="image/special-facilities1.jpg" alt="부대시설사진1" />
+          </li>
+          <li class="special-facilities-second">
+            <img src="image/special-facilities2.jpg" alt="부대시설사진2" />
+          </li>
+        </div>
+
+        <div>
+          <div class="facilities">
+            <h1>FACILITIES</h1>
+            <div class="facilities-img">
+              <li class="facilities-img-trampoline">
+                <img src="image/trampoline.jpg" alt="트램플린" /><br />
+                <div class="caption">
+                  <h2>트램플린</h2>
+                  <p>사용시간 : 09:00 ~ 18:00</p>
+                  <p>위치 : 팬션 뒤쪽</p>
+                  <p>사용목적 : 놀이</p>
+                </div>
+              </li>
+              <li class="facilities-img-valley">
+                <img src="image/valley.jpg" alt="계곡" /><br />
+                <div class="caption">
+                  <h2>계곡</h2>
+                  <p>사용시간 : 09:00 ~ 20:00</p>
+                  <p>위치 : 주변관광지 참조</p>
+                  <p>주의사항 : 마스크 착용필수</p>
+                </div>
+              </li>
+              <li class="facilities-img-trail">
+                <img src="image/trail.jpg" alt="산책로" /><br />
+                <div class="caption">
+                  <h2>산책로</h2>
+                  <p>사용시간 : --:--</p>
+                  <p>위치 : 주변관광지 참조</p>
+                  <p>주의사항 : 마스크 착용필수</p>
+                </div>
+              </li>
+              <li class="facilities-img-pool">
+                <img src="image/pool.jpg" alt="수영장" /><br />
+                <div class="caption">
+                  <h2>수영장</h2>
+                  <p>사용시간 : 09:00 ~ 22:00</p>
+                  <p>위치 : 펜션 중심</p>
+                  <p>주의사항 : 마스크 착용필수</p>
+                </div>
+              </li>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+    <div id="footer"></div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
+    <script src="./commonJS/js.js"></script>
+    <script src="HH-script/jquery.js"></script>
+    <script src="JA-script/common.js"></script>
+    <script>
+      let currSlide = 1;
+      showSlide(currSlide);
+
+      function button_click(num) {
+        showSlide((currSlide += num));
+      }
+      function showSlide(num) {
+        const slides = document.querySelectorAll(".slide");
+        if (num > slides.length) {
+          currSlide = 1;
+        }
+        if (num < 1) {
+          currSlide = slides.length;
+        }
+        for (let i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+        }
+        slides[currSlide - 1].style.display = "block";
+      }
+    </script>
+  </body>
+</html>

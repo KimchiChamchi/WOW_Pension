@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WOW PENSION-ROOM</title>
+    <!-- <link rel="stylesheet" href="/css/jquery.bxslider.min.css" /> -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+      integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/room.css" />
+    <link rel="stylesheet" href="css/topbottom.css" />
+    <style>
+      .swiper {
+        width: 900px;
+        height: 562px;
+      }
+
+      .swiper .swiper-slide img {
+        width: 900px;
+        height: 562px;
+      }
+
+      .swiper-img-btn {
+        width: 900px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin: 0 auto;
+      }
+
+      .swiper-img-btn img {
+        width: 100px;
+        margin: 10px 4px 0px;
+        cursor: pointer;
+      }
+
+      .swiper-nav {
+        display: flex;
+        justify-content: space-evenly;
+      }
+
+      .swiper-nav p {
+        border: 1px solid;
+        padding: 10px;
+        cursor: pointer;
+      }
+
+      .swiper-nav p:hover {
+        background-color: black;
+        color: white;
+      }
+
+      .swiper-nav p.active-nav {
+        background-color: black;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- /////////////////////////////////////////////////////////////////////////// -->
+    <div id="header"></div>
+    <!-- ////////////////////////////////////////////////////////////////////////////// -->
+    <img class="bg-sub" src="HH-image/bg_sub.jpg" alt="" />
+    <div class="section">
+      <div class="swiper-nav">
+        <p class="active-nav">대청마루</p>
+        <p>소나무</p>
+        <p>호수</p>
+        <p>햇살</p>
+        <p>달무리</p>
+      </div>
+      <!-- //////////////////////////////////////////////////////////////////////// -->
+      <div id="roomSwiper"></div>
+      <!-- //////////////////////////////////////////////////////////////////////// -->
+      <div class="btn">
+        <button id="low">비수기</button>
+        <button id="peak">성수기</button>
+      </div>
+      <div class="price-div">
+        <img src="HH-image/price0.png" id="price-table" />
+      </div>
+    </div>
+    <!-- ////////////////////////////////////////////////////////////////////////////// -->
+    <div id="footer"></div>
+    <!-- /////////////////////////////////////////////////////////////////////////// -->
+    <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
+    <script src="./commonJS/js.js"></script>
+    <script src="./HH-script/jquery.js  "></script>
+    <script src="./JA-script/common.js"></script>
+    <script src="HH-script/room.js"></script>
+    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+  </body>
+</html>

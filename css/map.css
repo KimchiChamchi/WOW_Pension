@@ -1,0 +1,110 @@
+
+.header-sub {
+  height: 200px;
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+.headersub {
+  text-align: center;
+  display: inline-block;
+  width: 100%;
+  
+}
+
+.headersub h1 {
+  font-size: 60px;
+  text-align: center;
+  font-weight: bold;
+  font-family: "Ubuntu";
+  color: #333;
+}
+.headersub .line {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+  width: 50px;
+  height: 2px;
+  background-color: #333;
+}
+.map_wrap{
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  font-size: 0;
+  padding-bottom: 70px;
+  
+}
+
+.map_wrap #map {
+  display: inline-block;
+  width: 100%;
+  height: 700px;
+  margin-top: 60px;
+ 
+}
+
+.map_wrap .mapinfo dl {
+  display: inline-block;
+  margin-top: 60px;
+  width: 50%;
+  font-size: 14px;
+  vertical-align: top;
+  margin-bottom: 0;
+  
+}
+.map_wrap .mapinfo dt {
+  color: #222;
+  font-size: 15px;
+  font-weight: bold;
+  text-align: initial ;
+}
+.map_wrap .mapinfo dd {
+  margin-top: 10px;
+  color: #444;
+  font-size: 14px;
+  line-height: 1.96;
+  word-break: keep-all;
+  margin : 0;
+  text-align: initial ;
+}
+.map_wrap .mapinfo dd p {
+  text-align: initial ;
+}
+
+.headersub span {
+  font-size: 25px;
+}
+
+
+.house {
+  text-align: center;
+}
+
+.house h1 {
+  display: inline-block;
+  font-size: 45px;
+  margin-right: 10px;
+  text-align: center;
+}
+@media (max-width: 1024px){
+  .map_wrap {
+    max-width: 100%;
+  }
+
+.map_wrap #map {
+    margin-top: 40px;
+}
+
+.map_wrap .mapinfo {
+  padding: 0 15px;
+}
+.map_wrap .mapinfo dl {
+  display: block;
+  margin-top: 30px;
+  width: 100%
+}
+
+}

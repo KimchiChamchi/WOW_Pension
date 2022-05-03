@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <title>로그인</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+      integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/topbottom.css" />
+    <style>
+      #loginwrap > .login {
+        position: relative;
+        width: 460px;
+        margin: 90px auto 166px;
+        padding: 130px 20px 50px;
+        box-sizing: border-box;
+        border-radius: 5px;
+        box-shadow: 0 3px 12px rgba(142, 142, 142, 0.5);
+      }
+      .title {
+        box-sizing: border-box;
+        position: absolute;
+        display: block;
+        left: 0;
+        top: 0;
+        background-color: #545454;
+        color: #cacaca;
+        text-align: center;
+        width: 460px;
+        height: 80px;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        font-size: 14px;
+        padding: 30px;
+      }
+      #email,
+      #pwd {
+        padding: 10px;
+        text-align: left;
+        display: inline-block;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        font-size: 1em;
+        line-height: 2em;
+        margin-bottom: 15px;
+        border-radius: 5px;
+      }
+      .btn {
+        cursor: pointer;
+        width: 250px;
+        font-size: 13px;
+        border: none;
+        color: white;
+        background-color: #d2d2d2;
+        line-height: 1.5em;
+        padding: 15px;
+        margin-top: 30px;
+        border-radius: 5px;
+      }
+      p > a {
+        text-decoration: none;
+        font-size: 13px;
+        color: #545454;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="header"></div>
+    <!-- 로그인 폼 시작 -->
+    <div id="loginwrap">
+      <div class="login">
+        <div class="title">MEMBER LOGIN</div>
+        <div class="form">
+          <input type="email" id="email" placeholder="아이디(이메일)" size="45" autofocus />
+          <div></div>
+          <input type="password" id="pwd" placeholder="비밀번호" size="45" />
+          <div><button class="btn btn_login">LOGIN</button></div>
+          <p>
+            <a href="register.html">회원가입을 하시려면 여기를 클릭하세요</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- 로그인 폼 끝 -->
+    <div id="footer"></div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
+    <script>
+      var firebaseEmailAuth; //파이어베이스 email 인증 모듈 전역변수
+      var firebaseDatabase; //파이어베이스 db 모듈 전역변수
+      var name; //유저 이름
+      var loginUserKey; //로그인한 유저의 부모 key
+      var userInfo; //로그인한 유저의 정보 object type
+      //파이어 베이스 초기화 코드
+      var config = {
+        apiKey: "AIzaSyD4MHXRMon7do8BnEOjAKdMINT4H23xT0k",
+        authDomain: "teamprj-aba9c.firebaseapp.com",
+        databaseURL: "https://teamprj-aba9c-default-rtdb.firebaseio.com",
+        projectId: "teamprj-aba9c",
+        storageBucket: "teamprj-aba9c.appspot.com",
+        messagingSenderId: "871735422804",
+      };
+      firebase.initializeApp(config);
+
+      firebaseEmailAuth = firebase.auth(); //파이어베이스 인증 객체
+      firebaseDatabase = firebase.database(); //파이어베이스 데이터베이스 객체
+
+      //제이쿼리를 사용한다.
+      $(document).ready(function () {
+        //가입버튼 눌렀을 때
+        $(document).on("click", ".btn_login", function () {
+          //제이쿼리 선택자와 val() 함수를 이용해서 이메일,비밀번호 값을 가져온다.
+          var email = $("#email").val();
+          var password = $("#pwd").val();
+          //파이어베이스 이메일 로그인 함수
+          firebaseEmailAuth
+            .signInWithEmailAndPassword(email, password)
+            .then(function (firebaseUser) {
+              //성공하면 firebaseUser에 유저 정보 값이 담겨 넘어온다.
+              loginSuccess(firebaseUser);
+              return firebaseEmailAuth.signInWithEmailAndPassword(email, password);
+            })
+            .catch(function (error) {
+              // 실패했을 때 에러 처리
+              alert(error);
+              alert("로그인 실패");
+            });
+        });
+      });
+
+      //로그인 성공했을 때
+      function loginSuccess(firebaseUser) {
+        alert("로그인 성공");
+
+        //로그인 성공한 유저 id 확인해 보기 - firebase database에 접근해서 데이터 조회 하는 함수
+        firebaseDatabase
+          .ref("users/" + firebaseUser.uid)
+          .once("value")
+          .then(function (snapshot) {
+            //alert(snapshot.val().name)
+          });
+
+        //메인 페이지로 이동
+        window.location.href = "/index.html";
+      }
+      $("#pwd").on("keypress", function (e) {
+        if (e.keyCode == "13") {
+          $(".btn_login").click();
+        }
+      });
+      $("#email").on("keypress", function (e) {
+        if (e.keyCode == "13") {
+          $(".btn_login").click();
+        }
+      });
+    </script>
+    <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
+    <script src="HH-script/chuser.js"></script>
+    <script src="JA-script/common.js"></script>
+    <script src="HH-script/chuser.js"></script>
+  </body>
+</html>

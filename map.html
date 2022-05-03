@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>WOW PENSION-MAP</title>
+    <link rel="stylesheet" href="css/map.css" />
+    <link rel="stylesheet" href="css/topbottom.css" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+      integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div id="header"></div>
+    <!-- ----------------------------------------------------------------------------------------------- -->
+    <img class="header-sub" src="JA-image/header-sub.png" alt="" />
+    <div class="headersub">
+      <h1>ADDRESS</h1>
+      <div class="line"></div>
+    </div>
+
+    <div class="map_wrap">
+      <div id="map">
+        <script>
+          function initMap() {
+            var mapdata = { lat: 36.373479893156436, lng: 127.55564559530826 };
+            var map = new google.maps.Map(document.getElementById("map"), {
+              zoom: 16,
+              center: mapdata,
+            });
+            const contentString = "와우펜션";
+            const infowindow = new google.maps.InfoWindow({
+              content: contentString,
+            });
+            var marker = new google.maps.Marker({
+              position: mapdata,
+              map: map,
+              title: "와우펜션",
+            });
+            infowindow.open({
+              anchor: marker,
+              map,
+            });
+          }
+        </script>
+        <script
+          async
+          defer
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBEjo7eiKShDpc6Nlqzo7aK3R4mhxjXqqc&callback=initMap"
+        ></script>
+      </div>
+
+      <div class="mapinfo">
+        <dl>
+          <dt><img src="JA-image/map.png" height="25px" /> 주소</dt>
+          <dd><p>충청북도 옥천군 군북면 환산로 815번지(선감동)</p></dd>
+        </dl>
+        <dl>
+          <dt><img src="JA-image/phonecall.png" height="25px" /> 전화</dt>
+          <dd><p>010-1234-5678</p></dd>
+        </dl>
+        <dl>
+          <dt>
+            <img src="JA-image/car.png" height="25px" /> 자가용으로 오시는 방법
+          </dt>
+          <dd>
+            <p>
+              서울 -> 경부고속도로 -> 옥천IC -> 군서면 약8km -> 장용산휴양림<br />
+              대전 -> 산내방면 -> 산내초등학교에서 좌회전 -> 곤룡터널 통과 ->
+              옥천 금산사거리에서 직진 -> 장용산휴양림
+            </p>
+          </dd>
+          <dd>
+            ※ 오시는 길에 문의사항이 있으시면 010-1234-5678으로 연락
+            부탁드립니다.
+          </dd>
+        </dl>
+        <dl>
+          <dt><img src="JA-image/bus.png" height="25px" />대중교통편</dt>
+          <dd>
+            <p>
+              옥천시외버스터미널 -> 100m 이동 삼동앞 정류장 -> 버스승차
+              (옥천~금천리)-> 이평리(회차)정류장 하차 -> 약 177m 도보이동 ->
+              펜션도착
+            </p>
+          </dd>
+        </dl>
+      </div>
+    </div>
+    <!-- ----------------------------------------------------------------------------------------------- -->
+    <div id="footer"></div>
+    <!-- ----------------------------------------------------------------------------------------------- -->
+  </body>
+  <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
+  <script src="./commonJS/js.js"></script>
+  <script src="HH-script/jquery.js"></script>
+  <script src="JA-script/common.js"></script>
+</html>

@@ -1,0 +1,103 @@
+<div class="room-desc">
+  <p id="room-name">햇살</p>
+  <p class="numOfPeople">인원(기준:4명/최대:4명)</p>
+  <p>복층 다다미룸(1층 다다미/2층 침대), 거실, 화장실, 독립 바베큐장, 취사불가</p>
+  <p>커플,가족 / 23평</p>
+</div>
+<div id="roomSwiper">
+  <div class="swiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <img src="./HH-image/sunlight01.jpg" />
+      </div>
+      <div class="swiper-slide">
+        <img src="./HH-image/sunlight02.jpg" />
+      </div>
+      <div class="swiper-slide">
+        <img src="./HH-image/sunlight03.jpg" />
+      </div>
+      <div class="swiper-slide">
+        <img src="./HH-image/sunlight04.jpg" />
+      </div>
+      <div class="swiper-slide">
+        <img src="./HH-image/sunlight05.jpg" />
+      </div>
+      <div class="swiper-slide">
+        <img src="./HH-image/sunlight06.jpg" />
+      </div>
+      <div class="swiper-slide">
+        <img src="./HH-image/sunlight07.jpg" />
+      </div>
+      <div class="swiper-slide">
+        <img src="./HH-image/sunlight08.jpg" />
+      </div>
+      <div class="swiper-slide">
+        <img src="./HH-image/sunlight09.jpg" />
+      </div>
+      <div class="swiper-slide">
+        <img src="./HH-image/sunlight10.jpg" />
+      </div>
+      <div class="swiper-slide">
+        <img src="./HH-image/sunlight11.jpg" />
+      </div>
+      <div class="swiper-slide">
+        <img src="./HH-image/sunlight12.jpg" />
+      </div>
+    </div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  </div>
+  <div class="sw-auto-stop">
+    <button id="swAuto">▶</button>
+    <button id="swStop">❚❚</button>
+  </div>
+
+  <div class="swiper-img-btn">
+    <img src="./HH-image/sunlight01.jpg" />
+    <img src="./HH-image/sunlight02.jpg" />
+    <img src="./HH-image/sunlight03.jpg" />
+    <img src="./HH-image/sunlight04.jpg" />
+    <img src="./HH-image/sunlight05.jpg" />
+    <img src="./HH-image/sunlight06.jpg" />
+    <img src="./HH-image/sunlight07.jpg" />
+    <img src="./HH-image/sunlight08.jpg" />
+    <img src="./HH-image/sunlight09.jpg" />
+    <img src="./HH-image/sunlight10.jpg" />
+    <img src="./HH-image/sunlight11.jpg" />
+    <img src="./HH-image/sunlight12.jpg" />
+  </div>
+</div>
+
+<script>
+  setTimeout(() => {
+    const swiper = new Swiper(".swiper", {
+      loop: true,
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      autoplay: { delay: 2000 },
+    });
+    let switching = false;
+    $(".swiper-img-btn img").each((index, el) => {
+      $(el).click(function () {
+        if (switching == true) return;
+        switching = true;
+        swiper.slideTo(index + 1, 300);
+        setTimeout(() => {
+          switching = false;
+        }, 300);
+      });
+    });
+    $("#swAuto").click(function () {
+      swiper.autoplay.start();
+    });
+    $("#swStop").click(function () {
+      swiper.autoplay.stop();
+    });
+    $(".swiper-nav p").click(function () {
+      $(".swiper-nav p").removeClass("active-nav");
+      $(this).addClass("active-nav");
+    });
+  }, 1000);
+</script>

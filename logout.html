@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <title>로그아웃</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
+    <script>
+      var firebaseEmailAuth; //파이어베이스 email 인증 모듈 전역변수
+
+      //파이어 베이스 초기화 코드
+      var config = {
+        apiKey: "AIzaSyD4MHXRMon7do8BnEOjAKdMINT4H23xT0k",
+        authDomain: "teamprj-aba9c.firebaseapp.com",
+        databaseURL: "https://teamprj-aba9c-default-rtdb.firebaseio.com",
+        projectId: "teamprj-aba9c",
+        storageBucket: "teamprj-aba9c.appspot.com",
+        messagingSenderId: "871735422804",
+      };
+      //파이어베이스 초기화
+      firebase.initializeApp(config);
+      //인증모듈 객체 가져오기
+      firebaseEmailAuth = firebase.auth();
+      firebaseEmailAuth
+        .signOut()
+        .then(function () {
+          window.location.href = "/index.html";
+        })
+        .catch(function (error) {
+          if (error) {
+            alert("로그인 실패");
+          }
+        });
+    </script>
+  </body>
+</html>

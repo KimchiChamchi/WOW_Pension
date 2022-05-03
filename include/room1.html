@@ -1,0 +1,119 @@
+<div class="room-desc">
+  <p id="room-name">대청마루</p>
+  <p class="numOfPeople">인원(기준:4명/최대:4명)</p>
+  <p>다다미룸, 주방, 화장실(반층위 대청마루 전용 화장실), 독립 바베큐장, 취사불가</p>
+  <p>커플,가족 / 30평</p>
+</div>
+<div id="roomSwiper">
+  <div class="swiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <img src="HH-image/Daecheongmaru01.jpg" alt="" />
+      </div>
+      <div class="swiper-slide">
+        <img src="HH-image/Daecheongmaru02.jpg" alt="" />
+      </div>
+      <div class="swiper-slide">
+        <img src="HH-image/Daecheongmaru03.jpg" alt="" />
+      </div>
+      <div class="swiper-slide">
+        <img src="HH-image/Daecheongmaru04.jpg" alt="" />
+      </div>
+      <div class="swiper-slide">
+        <img src="HH-image/Daecheongmaru05.jpg" alt="" />
+      </div>
+      <div class="swiper-slide">
+        <img src="HH-image/Daecheongmaru06.jpg" alt="" />
+      </div>
+      <div class="swiper-slide">
+        <img src="HH-image/Daecheongmaru07.jpg" alt="" />
+      </div>
+      <div class="swiper-slide">
+        <img src="HH-image/Daecheongmaru08.jpg" alt="" />
+      </div>
+      <div class="swiper-slide">
+        <img src="HH-image/Daecheongmaru09.jpg" alt="" />
+      </div>
+      <div class="swiper-slide">
+        <img src="HH-image/Daecheongmaru10.jpg" alt="" />
+      </div>
+      <div class="swiper-slide">
+        <img src="HH-image/Daecheongmaru11.jpg" alt="" />
+      </div>
+      <div class="swiper-slide">
+        <img src="HH-image/Daecheongmaru12.jpg" alt="" />
+      </div>
+      <div class="swiper-slide">
+        <img src="HH-image/Daecheongmaru13.jpg" alt="" />
+      </div>
+      <div class="swiper-slide">
+        <img src="HH-image/Daecheongmaru14.jpg" alt="" />
+      </div>
+      <div class="swiper-slide">
+        <img src="HH-image/Daecheongmaru15.jpg" alt="" />
+      </div>
+      <div class="swiper-slide">
+        <img src="HH-image/Daecheongmaru16.jpg" alt="" />
+      </div>
+    </div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  </div>
+  <div class="sw-auto-stop">
+    <button id="swAuto">▶</button>
+    <button id="swStop">❚❚</button>
+  </div>
+
+  <div class="swiper-img-btn">
+    <img src="HH-image/Daecheongmaru01.jpg" />
+    <img src="HH-image/Daecheongmaru02.jpg" />
+    <img src="HH-image/Daecheongmaru03.jpg" />
+    <img src="HH-image/Daecheongmaru04.jpg" />
+    <img src="HH-image/Daecheongmaru05.jpg" />
+    <img src="HH-image/Daecheongmaru06.jpg" />
+    <img src="HH-image/Daecheongmaru07.jpg" />
+    <img src="HH-image/Daecheongmaru08.jpg" />
+    <img src="HH-image/Daecheongmaru09.jpg" />
+    <img src="HH-image/Daecheongmaru10.jpg" />
+    <img src="HH-image/Daecheongmaru11.jpg" />
+    <img src="HH-image/Daecheongmaru12.jpg" />
+    <img src="HH-image/Daecheongmaru13.jpg" />
+    <img src="HH-image/Daecheongmaru14.jpg" />
+    <img src="HH-image/Daecheongmaru15.jpg" />
+    <img src="HH-image/Daecheongmaru16.jpg" />
+  </div>
+</div>
+
+<script>
+  setTimeout(() => {
+    const swiper = new Swiper(".swiper", {
+      loop: true,
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      autoplay: { delay: 2000 },
+    });
+    let switching = false;
+    $(".swiper-img-btn img").each((index, el) => {
+      $(el).click(function () {
+        if (switching == true) return;
+        switching = true;
+        swiper.slideTo(index + 1, 300);
+        setTimeout(() => {
+          switching = false;
+        }, 300);
+      });
+    });
+    $("#swAuto").click(function () {
+      swiper.autoplay.start();
+    });
+    $("#swStop").click(function () {
+      swiper.autoplay.stop();
+    });
+    $(".swiper-nav p").click(function () {
+      $(".swiper-nav p").removeClass("active-nav");
+      $(this).addClass("active-nav");
+    });
+  }, 1000);
+</script>

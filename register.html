@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <title>회원가입</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+      integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/topbottom.css" />
+    <style>
+      #regwrap {
+        margin: 50px auto;
+      }
+      .register {
+        position: relative;
+        width: 700px;
+        margin: 0 auto;
+        padding: 130px 20px 50px;
+        box-sizing: border-box;
+        border-radius: 5px;
+        box-shadow: 0 3px 12px rgba(142, 142, 142, 0.5);
+      }
+      .title {
+        box-sizing: border-box;
+        position: absolute;
+        display: block;
+        left: 0;
+        top: 0;
+        background-color: #545454;
+        color: #cacaca;
+        text-align: left;
+        width: 700px;
+        height: 80px;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        font-size: 14px;
+        padding: 30px 80px;
+        background: url(HH-image/bg_reg.gif);
+      }
+      .form > input {
+        display: inline-block;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        font-size: 1em;
+        line-height: 2em;
+        margin-bottom: 15px;
+        border-radius: 5px;
+        width: 600px;
+        padding: 10px;
+        text-align: left;
+      }
+      #user_age {
+        width: 20px;
+      }
+      .btn {
+        cursor: pointer;
+        display: inline-block;
+        clear: both;
+        width: 600px;
+        font-size: 1.5em;
+        border: none;
+        color: white;
+        background-color: #0549bb;
+        line-height: 1.5em;
+        padding: 10px;
+        margin-top: 20px;
+        border-radius: 5px;
+      }
+      a {
+        text-decoration: none;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="header"></div>
+    <div id="regwrap">
+      <div class="register">
+        <div class="title">MEMBER SIGN UP</div>
+        <div class="form">
+          <input type="text" id="name" placeholder="이름" autofocus required />
+          <!-- <input type="text" id="id" placeholder="아이디" required /> -->
+          <input type="email" id="email" placeholder="아이디(이메일)" required />
+          <input type="password" id="pwd" placeholder="비밀번호" required />
+          <input type="tel" id="tel" placeholder="휴대폰 번호" required />
+          <div>
+            <label for="user_age"
+              ><input type="checkbox" id="user_age" />회원가입을 위한 개인정보 제공에 동의합니다.</label
+            >
+          </div>
+          <div>
+            <button type="submit" class="btn join"><b>가입하기</b></button>
+          </div>
+          <div>
+            <button class="btn back" style="background-color: #a4aab2" onclick="history.go(-1)"><b>돌아가기</b></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="footer"></div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
+    <script>
+      var firebaseEmailAuth; //파이어베이스 email 인증 모듈 전역변수
+      var firebaseDatabase; //파이어베이스 db 모듈 전역변수
+      var userInfo; //가입한 유저의 정보. object 타입
+      //파이어 베이스 초기화 코드
+      var config = {
+        apiKey: "AIzaSyD4MHXRMon7do8BnEOjAKdMINT4H23xT0k",
+        authDomain: "teamprj-aba9c.firebaseapp.com",
+        databaseURL: "https://teamprj-aba9c-default-rtdb.firebaseio.com",
+        projectId: "teamprj-aba9c",
+        storageBucket: "teamprj-aba9c.appspot.com",
+        messagingSenderId: "871735422804",
+      };
+      firebase.initializeApp(config);
+
+      firebaseEmailAuth = firebase.auth();
+      firebaseDatabase = firebase.database();
+
+      //제이쿼리
+      $(document).ready(function () {
+        //가입버튼 눌렀을 때 작동하는 함수
+        $(document).on("click", ".join", function () {
+          //jquery를 이용해서 입력된 값을 가져온다.
+          var email = $("#email").val();
+          var password = $("#pwd").val();
+          name = $("#name").val();
+
+          //이메일로 가입 버튼 눌렀을 때 작동되는 함수 - firebase 인증 모듈
+          firebaseEmailAuth.createUserWithEmailAndPassword(email, password).then(
+            function (user) {
+              userInfo = user; //가입 후 callBack 함수로 생성된 유저의 정보가 user에 담겨서 넘어온다. 전역변수에 할당.
+
+              //뭐가 찍히는지 직접 체크해보세요.
+              console.log("userInfo/" + userInfo); //오브젝트 타입
+              console.log("userInfo.currentUser/" + userInfo.currentUser); //안됨
+              console.log("userInfo.uid/" + userInfo.uid); //vPArtCHqPpOeIOpidEfug0Kgq3v1
+
+              //성공했을 때 작동되는 함수
+              logUser();
+            },
+            function (error) {
+              //에러가 발생했을 때
+              var errorCode = error.code;
+              var errorMessage = error.message;
+              alert(errorMessage);
+            }
+          );
+
+          //가입 성공했을 때 호출 되는 함수 - 위의 firebase의 인증 모듈과 다른 database 모듈임을 확인하자.
+          function logUser() {
+            var ref = firebaseDatabase.ref("users/" + userInfo.uid); //저장될 곳을 users라는 부모 키를 레퍼런스로 지정.
+
+            //저장 형식
+            var obj = {
+              name: name,
+            };
+
+            ref.set(obj); // 고유한 자식 키가 하나 생셩이 되면서 json 삽입
+            alert("가입성공");
+
+            //메인 페이지로 이동시키고 세션 저장시키기
+            window.location.href = "/";
+          }
+        });
+      });
+      $("#name").on("keypress", function (e) {
+        if (e.keyCode == "13") {
+          $(".join").click();
+        }
+      });
+      $("#email").on("keypress", function (e) {
+        if (e.keyCode == "13") {
+          $(".join").click();
+        }
+      });
+      $("#pwd").on("keypress", function (e) {
+        if (e.keyCode == "13") {
+          $(".join").click();
+        }
+      });
+      $("#tel").on("keypress", function (e) {
+        if (e.keyCode == "13") {
+          $(".join").click();
+        }
+      });
+    </script>
+    <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
+    <script src="HH-script/chuser.js"></script>
+    <script src="JA-script/common.js"></script>
+    <script src="HH-script/chuser.js"></script>
+  </body>
+</html>

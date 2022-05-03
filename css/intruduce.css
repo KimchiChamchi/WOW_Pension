@@ -1,0 +1,49 @@
+.house {
+  width: 57.292vw;
+  text-align: center;
+  display: inline-block;
+}
+
+.house h1 {
+  display: inline-block;
+  font-size: 2.344vw;
+  margin-right: 0.521vw;
+  text-align: center;
+}
+
+.house span {
+  font-size: 1.302vw;
+}
+
+.house-img {
+  width: 62.5vw;
+  height: 31.25vw;
+}
+
+.house-img span {
+  list-style: none;
+  float: left;
+  margin: 0.26vw;
+  vertical-align: middle;
+}
+
+.house-img-main img {
+  width: 31.25vw;
+  height: 30.99vw;
+}
+
+.house-first-main img {
+  width: 26.042vw;
+  height: 15.104vw;
+}
+.house-second-main img {
+  width: 26.042vw;
+  height: 15.104vw;
+}
+
+.house-text {
+  list-style: none;
+  font-size: 1.042vw;
+  text-align: left;
+  margin-bottom: 0.729vw;
+}

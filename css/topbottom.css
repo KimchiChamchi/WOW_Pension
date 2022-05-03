@@ -1,0 +1,114 @@
+* {
+  position: relative;
+  text-align: center;
+}
+a {
+  text-decoration: none;
+  color: white;
+}
+#header {
+  width: 100%;
+  margin: 0;
+  height: 130px;
+  background-color: #263343;
+}
+.headline {
+  position: relative;
+  display: flex;
+  width: 100%;
+  margin: 0px;
+  left: 0px;
+  height: 130px;
+  background-color: #263343;
+  justify-content: center;
+}
+
+.menu {
+  width: 950px;
+  height: 100px;
+  font-size: 30px;
+  margin-top: 10px;
+  display: inline-block;
+}
+
+.right-text {
+  width: 250px;
+  height: 30px;
+  display: inline-block;
+  margin-top: 10px;
+  text-align: right;
+}
+
+.right-text span {
+  margin: 10px;
+  color: white;
+}
+
+.right-text i {
+  margin: 10px;
+  color: white;
+}
+
+.menu img {
+  width: 170px;
+  height: 100px;
+  margin-left: 0;
+  border-radius: 5px;
+}
+.menu span {
+  padding: 8px 12px;
+  margin: 5px;
+  bottom: 40px;
+  color: white;
+}
+
+.menu span:hover {
+  background-color: #d49466;
+  border-radius: 4px;
+}
+
+#footer {
+  position: relative;
+  margin: 0;
+  margin-top: 20px;
+  padding: 0;
+  left: 0px;
+  width: 100%;
+  height: 200px;
+  text-align: center;
+  background-color: #263343;
+}
+
+.bottom {
+  margin: 0 auto;
+  width: 1200px;
+  text-align: center;
+}
+
+.bottom img {
+  width: 200px;
+  height: 130px;
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 35px;
+}
+
+.bottom-text {
+  color: white;
+  float: right;
+  width: 70%;
+  height: 100%;
+  font-size: 15px;
+}
+
+.bottom-text dl,
+.bottom-text dt {
+  margin: 5px;
+  display: inline-block;
+  font-size: 16px;
+  font-style: inherit;
+}
+
+body {
+  margin: 0;
+}

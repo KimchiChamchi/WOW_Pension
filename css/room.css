@@ -1,0 +1,122 @@
+body {
+  margin: 0;
+  width: 100%;
+  position: relative;
+  text-align: center;
+  box-sizing: border-box;
+}
+.bg-sub {
+  height: 200px;
+  width: 100%;
+  margin: 0 auto;
+  margin-bottom: -4px;
+}
+.section {
+  display: inline-block;
+  margin: 0px;
+}
+#room-name {
+  color: #333333;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 2em;
+  line-height: 2em;
+  font-weight: bold;
+}
+.room-list {
+  width: 150px;
+  float: left;
+  list-style: none;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+ul {
+  clear: both;
+}
+ul li {
+  margin-top: 30px;
+  line-height: 55px;
+  font-size: 20px;
+  font-weight: bold;
+}
+ul li a:hover {
+  cursor: pointer;
+  color: #f2c36b;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in-out;
+}
+ul li a {
+  color: black;
+}
+.article {
+  padding-bottom: 45px;
+}
+/* img {
+  display: inline-block;
+  margin: 0 auto;
+} */
+
+.room-hide-show .room-desc {
+  display: none;
+}
+
+.room-hide-show div:first-child {
+  display: block;
+}
+.btn {
+  width: 906px;
+  margin: 20px 0 auto;
+  display: flex;
+}
+.btn button {
+  float: left;
+  margin-left: 10px;
+  cursor: pointer;
+  border: none;
+  background-color: #333333;
+  color: white;
+  font-size: 0.8em;
+  font-weight: bold;
+  line-height: 50px;
+  border-radius: 10%;
+}
+button:hover {
+  background-color: #ff3300;
+}
+
+.numOfPeople {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 0;
+}
+p {
+  line-height: 1em;
+}
+
+.sw-auto-stop {
+  width: 900px;
+  text-align: right;
+}
+#swAuto,
+#swStop {
+  margin: 0px 5px;
+  padding: 0;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  font-size: 20px;
+  color: #333333;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.swiper-img-btn img {
+  justify-content: center;
+  width: 10%;
+  border: solid 1px black;
+  margin: 4px;
+}
+/* 
+.room-desc {
+  padding-left: 150px;
+} */

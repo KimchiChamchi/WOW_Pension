@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.js"
+      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+      crossorigin="anonymous"
+    ></script>
+    <script src="./libs/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="css/Reservation.css" />
+    <link rel="stylesheet" href="./libs/jquery-ui-1.12.1/jquery-ui.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+      integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div id="header"></div>
+    <!-- <input type="text" class="dateFrom" />
+    <input type="text" class="dateTo" />
+    <label for="">인원</label>
+    <select class="people">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+    </select>
+    <label for="">펜션</label>
+    <select class="roomType">
+      <option value="안녕">안녕</option>
+      <option value="바이">바이</option>
+      <option value="세상">세상</option>
+      <option value="터짐">터짐</option>
+    </select>
+    <button class="REZ"></button> -->
+
+    <div id="main_reservation">
+      <div class="main_table_reservation">
+        <span class="main_reserv3">
+          <label for="from">입실날짜</label>
+          <input type="text" class="dateFrom" name="from" />
+          <label for="to">퇴실날짜</label>
+          <input type="text" class="dateTo" name="to" />
+        </span>
+
+        <span class="main_reserv4">
+          <select class="people">
+            <option selected="selected">인원</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+          </select>
+        </span>
+
+        <span class="main_reserv6">
+          <select class="roomType">
+            <option selected="selected">방선택</option>
+            <option value="대청마루">대청마루</option>
+            <option value="소나무">소나무</option>
+            <option value="호수">호수</option>
+            <option value="햇살">햇살</option>
+            <option value="달무리">달무리</option>
+          </select>
+        </span>
+
+        <span class="main_reserv5">
+          <input
+            type="button"
+            onclick="reservCheck()"
+            value=" 예약하기 "
+            id="reservButton"
+            class="REZ"
+          />
+        </span>
+      </div>
+    </div>
+
+    <div class="border">
+      <div class="list">
+        <div class="_name"></div>
+        <div class="_form"></div>
+        <div class="_to"></div>
+        <div class="_people"></div>
+        <div class="_roomType"></div>
+      </div>
+      <button class="close">예약 취소</button>
+    </div>
+
+    <div style="margin-top: 20px">
+      <img
+        id="selectRoom-img"
+        src="image/intruduce-main-image.jpg"
+        style="width: 52.083vw"
+      />
+    </div>
+
+    <div id="footer"></div>
+  </body>
+
+  <script>
+    let datepicker = $(".dateFrom").datepicker({
+      dateFormat: "yy-mm-dd",
+      minDate: 0,
+      onSelect: function () {
+        datepicker2.datepicker(
+          "option",
+          "minDate",
+          datepicker.datepicker("getDate")
+        );
+      },
+    });
+    let datepicker2 = $(".dateTo").datepicker({
+      dateFormat: "yy-mm-dd",
+      minDate: 1,
+    });
+    datepicker.datepicker("setDate", new Date());
+    datepicker2.datepicker("setDate", new Date());
+  </script>
+
+  <script type="text/javascript"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
+  <script>
+    var firebaseEmailAuth; //파이어베이스 email 인증 모듈 전역변수
+    var firebaseDatabase; //파이어베이스 db 모듈 전역변수
+    var userInfo; //가입한 유저의 정보. object 타입
+    //파이어 베이스 초기화 코드
+    var config = {
+      apiKey: "AIzaSyD4MHXRMon7do8BnEOjAKdMINT4H23xT0k",
+      authDomain: "teamprj-aba9c.firebaseapp.com",
+      databaseURL: "https://teamprj-aba9c-default-rtdb.firebaseio.com",
+      projectId: "teamprj-aba9c",
+      storageBucket: "teamprj-aba9c.appspot.com",
+      messagingSenderId: "871735422804",
+    };
+    firebase.initializeApp(config);
+
+    firebaseEmailAuth = firebase.auth();
+    firebaseDatabase = firebase.database();
+
+    //제이쿼리
+    $(document).ready(function () {
+      //세션 체크 함수
+      userSessionCheck();
+
+      //유저가 로그인 했는지 안했는지 확인해주는 함수
+      function userSessionCheck() {
+        //로그인이 되어있으면 - 유저가 있으면, user를 인자값으로 넘겨준다.
+        firebaseEmailAuth.onAuthStateChanged(function (user) {
+          if (user) {
+            //조회 - 데이터 베이스에 저장된 닉네임을 현재 접속되어 있는 user의 pk key 값을 이용해서 가져오기
+            firebaseDatabase
+              .ref("users/" + user.uid)
+              .once("value")
+              .then(function (snapshot) {
+                //자바스크립트 dom 선택자를 통해서 네비게이션 메뉴의 엘리먼트 변경해주기
+                document.getElementById("joinmenu").textContent = "로그아웃";
+                document.getElementById("joinmenu").href = "/logout.html";
+                document.getElementById("loginmenu").textContent =
+                  "반가워요! " + snapshot.val().name + "님";
+                document.getElementById("loginmenu").href = "#";
+
+                name = snapshot.val().name; //유저 닉네임은 계속 쓸거기 때문에 전역변수로 할당
+                loginUserKey = snapshot.key; //로그인한 유저의 key도 계속 쓸 것이기 때문에 전역변수로 할당
+                userInfo = snapshot.val(); //snapshot.val()에 user 테이블에 있는 해당 개체 정보가 넘어온다. userInfo에 대입!
+                console.log(userInfo);
+                //alert(userInfo.userid);  //uid는 db에서 user 테이블의 각 개체들의 pk 인데, 이 값은 인증에서 생성된 아이디의 pk 값과 같다. *중요!
+
+                return true;
+              });
+          } else {
+            return false;
+          }
+        });
+      }
+
+      //예약버튼 눌렀을 때 작동하는 함수
+      $(".REZ").on("click", function () {
+        //jquery를 이용해서 입력된 값을 가져온다.
+        var dateFrom = $(".dateFrom").val();
+        var dateTo = $(".dateTo").val();
+        var people = $(".people").val();
+        var roomType = $(".roomType").val();
+        // name = $("#name").val();
+        firebaseEmailAuth.onAuthStateChanged(function (user) {
+          let uid = user.uid;
+
+          // let customToken = FirebaseAuth.getInstance().createCustomToken(uid);
+          //이메일로 가입 버튼 눌렀을 때 작동되는 함수 - firebase 인증 모듈
+          // firebaseEmailAuth.createUserWithEmailAndPassword(email, password).then(
+          //   function (user) {
+          //     userInfo = user; //가입 후 callBack 함수로 생성된 유저의 정보가 user에 담겨서 넘어온다. 전역변수에 할당.
+
+          //     //뭐가 찍히는지 직접 체크해보세요.
+          //     console.log("userInfo/" + userInfo); //오브젝트 타입
+          //     console.log("userInfo.currentUser/" + userInfo.currentUser); //안됨
+          //     console.log("userInfo.uid/" + userInfo.uid); //vPArtCHqPpOeIOpidEfug0Kgq3v1
+
+          //     //성공했을 때 작동되는 함수
+          //     logUser();
+          //   },
+          //   function (error) {
+          //     //에러가 발생했을 때
+          //     var errorCode = error.code;
+          //     var errorMessage = error.message;
+          //     alert(errorMessage);
+          //   }
+          // );
+
+          //가입 성공했을 때 호출 되는 함수 - 위의 firebase의 인증 모듈과 다른 database 모듈임을 확인하자.
+
+          firebaseDatabase
+            .ref("list/")
+            .once("value")
+            .then(function (snapshot) {
+              userInfo = snapshot.val()[uid];
+              console.log(userInfo);
+              if (!(userInfo == undefined)) {
+                alert("이미 예약 정보가 있어요");
+              } else {
+                var ref = firebaseDatabase.ref("list/" + uid); //저장될 곳을 users라는 부모 키를 레퍼런스로 지정.
+
+                //저장 형식
+                var obj = {
+                  dateFrom: dateFrom,
+                  dateTo: dateTo,
+                  people: people,
+                  roomType: roomType,
+                };
+                ref.set(obj); // 고유한 자식 키가 하나 생셩이 되면서 json 삽입
+                console.log(obj);
+                alert("예약성공");
+                window.location.reload(true); //
+              }
+              return true;
+            });
+
+          //메인 페이지로 이동시키고 세션 저장시키기
+        });
+      });
+
+      firebaseEmailAuth.onAuthStateChanged(function (user) {
+        let uid = user.uid;
+        firebaseDatabase
+          .ref("list/")
+          .once("value")
+          .then(function (snapshot) {
+            userInfo = snapshot.val()[uid];
+            if (!(userInfo == undefined)) {
+              //
+              document.querySelector("._form").innerHTML = userInfo.dateFrom;
+              document.querySelector("._to").innerHTML = userInfo.dateTo;
+              document.querySelector("._people").innerHTML = userInfo.people;
+              document.querySelector("._roomType").innerHTML =
+                userInfo.roomType;
+            } else {
+              ///예약 정보 없을때
+            }
+            return true;
+          });
+        if (!(userInfo == undefined)) {
+          firebaseDatabase
+            .ref("users/" + user.uid)
+            .once("value")
+            .then(function (snapshot) {
+              userInfo = snapshot.val().reservation;
+              document.querySelector("._name").innerHTML = snapshot.val().name;
+              return true;
+            });
+        }
+      });
+    });
+    $(".close").click(function () {
+      firebaseEmailAuth.onAuthStateChanged(function (user) {
+        let uid = user.uid;
+        var ref = firebaseDatabase.ref("list/" + uid); //저장될 곳을 users라는 부모 키를 레퍼런스로 지정.
+
+        //저장 형식
+        var obj = null;
+        ref.set(obj); // 고유한 자식 키가 하나 생셩이 되면서 json 삽입
+        alert("예약 취소 되었습니다.");
+        window.location.reload(true); //
+      });
+    });
+  </script>
+  <script src="JA-script/common.js"></script>
+</html>
