@@ -1,4 +1,6 @@
 # WOW Pension - 개인 펜션 소개 웹페이지
+![image](https://user-images.githubusercontent.com/90792916/166607644-24b91eca-3cd3-48bc-86fc-bc1f6f3cbddb.png)
+
 
 
 ## 개발일정
@@ -6,17 +8,12 @@
 ![image](https://user-images.githubusercontent.com/90792916/166605345-ddcf1dcb-86b1-46ec-89ad-ccb2a3c4eded.png)
 
 
-### 
-
-![image](https://user-images.githubusercontent.com/90792916/166605848-d3bfab5e-1ff9-456e-9905-b7c856aa8962.png)
-
-
-
-![image](https://user-images.githubusercontent.com/90792916/166606608-27a7521c-7a1f-47a6-92b7-52d39585fb09.png)
+## 개발환경
+![image](https://user-images.githubusercontent.com/90792916/166608024-c9b72148-a731-4dc7-b714-5d2a4655819a.png)
+![image](https://user-images.githubusercontent.com/90792916/166608182-c8a6122f-f670-4134-b300-2f12b3a11c4c.png)
 
 
-![image](https://user-images.githubusercontent.com/90792916/166607239-80238021-a319-4116-9f5a-6c00a95c7f25.png)
 
-![image](https://user-images.githubusercontent.com/90792916/166607190-80fc168b-bbec-48fc-8cf8-51a42aeabde8.png)
+### 구글맵 API를 사용하여 사용
 
-![image](https://user-images.githubusercontent.com/90792916/166607101-2519486d-510b-4073-9441-3dc46c632d81.png)
+![image](https://user-images.githubusercontent.com/90792916/166607991-99b34d83-ed02-44bf-b016-9b6102a67e05.png)
